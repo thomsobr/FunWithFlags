@@ -37,16 +37,7 @@ public class GeneralFlags{
         UI.setLineWidth(1);
         UI.setColor(last);
         if (direction == "Horizontal") {
-            double stripeLength = vert * 50 / 3;
-            double stripeWidth = hori * 50;
-            double bottom = Y + vert * 50;
-            double middle = bottom - stripeLength;
-            double top = middle - stripeLength;
-            UI.fillRect(X, bottom, stripeWidth, stripeLength);
-            UI.setColor(second);
-            UI.fillRect(X, middle, stripeWidth, stripeLength);
-            UI.setColor(first);
-            UI.fillRect(X, top, stripeWidth, stripeLength);
+           drawHorizontal(vert, hori * 50, second, last);
         }
         else {
             double stripeLength = vert * 50;
@@ -70,6 +61,18 @@ public class GeneralFlags{
         int firstB = UI.askInt("B: ");
         Color col = new Color(firstR, firstG, firstB);
         return col;
+    }
+    
+    public void drawHorizontal(double vert, double stripeWidth, Color second, Color first) {
+         double stripeLength = vert * 50 / 3;
+         double bottom = Y + vert * 50;
+         double middle = bottom - stripeLength;
+         double top = middle - stripeLength;
+         UI.fillRect(X, bottom, stripeWidth, stripeLength);
+         UI.setColor(second);
+         UI.fillRect(X, middle, stripeWidth, stripeLength);
+         UI.setColor(first);
+         UI.fillRect(X, top, stripeWidth, stripeLength);
     }
 
 
